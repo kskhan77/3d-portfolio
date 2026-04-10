@@ -1,4 +1,5 @@
 import { Float, Sparkles } from '@react-three/drei'
+import { NatureCluster } from '../nature'
 import { IslandCore } from './IslandCore'
 
 function CrystalCluster({ points }: { points: [number, number, number][] }) {
@@ -70,6 +71,12 @@ export function NeuralSpireIsland() {
             [0.5, 1.15, 2.25],
           ]}
         />
+        <NatureCluster asset="rockLarge" position={[-2.6, 1.02, -2.25]} scale={1.08} />
+        <NatureCluster asset="rockSmall" position={[2.95, 1.02, 2.1]} scale={0.88} />
+        <NatureCluster asset="grassClump" position={[-1.45, 1.02, 2.05]} scale={0.7} />
+        <NatureCluster asset="grassClump" position={[1.2, 1.02, 2.45]} scale={0.64} />
+        <NatureCluster asset="flowerPatch" position={[-0.4, 1.03, 2.15]} scale={0.5} />
+        <NatureCluster asset="flowerPatch" position={[2.25, 1.02, -0.15]} scale={0.46} />
         <Sparkles
           count={34}
           scale={[7.5, 8.5, 7.5]}

@@ -1,35 +1,32 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { Canvas } from '@react-three/fiber'
-import * as THREE from 'three'
 import { leaderStart, teleportTargets } from './constants'
-import type { IslandId, OverlayPanelClassNames } from './types'
+import type { IslandId, NarrativeModalKey } from './types'
+import { BioModal } from './components/BioModal'
+import { ControlsGuide } from './components/ControlsGuide'
 import { OverlayHUD } from './components/OverlayHUD'
 import { Scene } from './components/Scene'
 
-export function SpatialCareerNarrative({
-  panelClassNames,
-}: {
-  panelClassNames: OverlayPanelClassNames
-}) {
-  const [targetPosition, setTargetPositionState] = useState(() => leaderStart.clone())
+export function SpatialCareerNarrative() {
   const [activeIslandId, setActiveIslandId] = useState<IslandId | null>('logistics')
-  const cameraTargetRef = useRef(leaderStart.clone())
-
-  const setTargetPosition = (position: THREE.Vector3) => {
-    setTargetPositionState(position.clone())
-  }
+  const [activeModal, setActiveModal] = useState<NarrativeModalKey>(null)
+  const [teleportTarget, setTeleportTarget] = useState(() => leaderStart.clone())
+  const [teleportVersion, setTeleportVersion] = useState(0)
 
   const handleTeleport = (islandId: IslandId) => {
-    setTargetPosition(teleportTargets[islandId])
+    setTeleportTarget(teleportTargets[islandId].clone())
+    setTeleportVersion((value) => value + 1)
+  }
+
+  const handleOpenBio = () => {
+    setActiveModal('bio')
   }
 
   return (
     <>
-      <OverlayHUD
-        activeIslandId={activeIslandId}
-        onTeleport={handleTeleport}
-        panelClassNames={panelClassNames}
-      />
+      <BioModal open={activeModal === 'bio'} onClose={() => setActiveModal(null)} />
+      <OverlayHUD activeIslandId={activeIslandId} onTeleport={handleTeleport} />
+      <ControlsGuide />
 
       <section className="canvas-shell">
         <Canvas
@@ -39,11 +36,11 @@ export function SpatialCareerNarrative({
           style={{ width: '100%', height: '100vh' }}
         >
           <Scene
-            targetPosition={targetPosition}
-            setTargetPosition={setTargetPosition}
             activeIslandId={activeIslandId}
             setActiveIslandId={setActiveIslandId}
-            cameraTargetRef={cameraTargetRef}
+            onOpenBio={handleOpenBio}
+            teleportTarget={teleportTarget}
+            teleportVersion={teleportVersion}
           />
         </Canvas>
       </section>

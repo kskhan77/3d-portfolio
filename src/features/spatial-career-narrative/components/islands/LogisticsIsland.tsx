@@ -1,4 +1,5 @@
 import { Float, Sparkles } from '@react-three/drei'
+import { NatureCluster } from '../nature'
 import { IslandCore } from './IslandCore'
 
 export function LogisticsIsland() {
@@ -43,6 +44,11 @@ export function LogisticsIsland() {
           <boxGeometry args={[0.88, 0.18, 0.88]} />
           <meshStandardMaterial color="#22d3ee" emissive="#06b6d4" emissiveIntensity={1.25} />
         </mesh>
+        <NatureCluster asset="rockLarge" position={[-2.65, 1.02, 1.85]} scale={1.08} />
+        <NatureCluster asset="rockSmall" position={[2.25, 1.02, 1.65]} scale={0.82} />
+        <NatureCluster asset="grassClump" position={[-2.2, 1.02, -1.12]} scale={0.72} />
+        <NatureCluster asset="grassClump" position={[2.45, 1.02, -0.95]} scale={0.64} />
+        <NatureCluster asset="flowerPatch" position={[-2.55, 1.02, 0.25]} scale={0.52} />
         <Sparkles
           count={18}
           scale={[5, 2, 5]}

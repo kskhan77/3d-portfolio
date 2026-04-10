@@ -40,5 +40,14 @@ export const sceneIntroCopy = {
   eyebrow: 'Spatial Career Narrative',
   title: 'Explore a handcrafted 3D world of career, AI, family, and ice-lit research.',
   description:
-    'Click anywhere in the world to move the squad. Khurram leads, while Shazain and Zaynah trail behind across floating islands, bridges, crystals, and story moments.',
+    'Step into the world as Khurram and explore floating islands, living gardens, neon research landmarks, and a personal bio outpost connected by glowing trails.',
+}
+
+export const bioLandmarkPosition = new THREE.Vector3(-2.5, 1.2, 3.5)
+
+export const bioContent = {
+  eyebrow: 'The Executive Overview',
+  title: 'Full Stack Architect | MS-AI University of Michigan | Spatial Computing Researcher',
+  description:
+    'Highly skilled developer with over 3 years of experience specializing in the design and deployment of scalable, enterprise-level web applications. Expert in building robust systems using a modern tech stack centered on React.js, Next.js, and Django. Currently bridging the gap between logistics engineering and the future of Artificial Intelligence and Extended Reality (XR) at the University of Michigan.',
 }

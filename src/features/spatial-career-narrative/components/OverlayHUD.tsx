@@ -1,17 +1,13 @@
 import { islands } from '../constants'
-import type { IslandId, OverlayPanelClassNames } from '../types'
+import type { IslandId } from '../types'
 
 export function OverlayHUD({
   activeIslandId,
   onTeleport,
-  panelClassNames,
 }: {
   activeIslandId: IslandId | null
   onTeleport: (islandId: IslandId) => void
-  panelClassNames: OverlayPanelClassNames
 }) {
-  void panelClassNames
-
   return (
     <nav className="teleport-dock" aria-label="Teleport">
       {islands.map((island, index) => (

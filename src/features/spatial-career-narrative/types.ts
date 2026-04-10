@@ -9,8 +9,4 @@ export type IslandDefinition = {
   infoPosition: [number, number, number]
 }
 
-export type OverlayPanelClassNames = {
-  hero: string
-  teleport: string
-  status: string
-}
+export type NarrativeModalKey = 'bio' | null
